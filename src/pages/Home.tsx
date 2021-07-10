@@ -1,8 +1,4 @@
-import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-
-import { AuthContext } from "../App";
-import { auth, firebase } from "../services/firebase";
 
 import IllustrationImg from "../assets/images/illustration.svg";
 import LogoImg from "../assets/images/logo.svg";
@@ -11,10 +7,11 @@ import GoogleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
 
 import "../styles/auth.scss";
+import { useAuth } from "../hooks/useAuth";
 
 export function Home() {
   const history = useHistory();
-  const { user, singInWithGoogle } = useContext(AuthContext);
+  const { user, singInWithGoogle } = useAuth();
 
   async function handleCreateRoom() {
     if (!user) {
@@ -32,8 +29,7 @@ export function Home() {
           alt="Ilustração simbolizando uma perguntas e respostas"
         />
         <strong>Toda pergunta tem uma resposta.</strong>
-
-        <p>Aprenda e compartilhe conhecimento com outras em tempo real.</p>
+        <p>Aprenda &amp; compartilhe conhecimento com outras em tempo real.</p>
       </aside>
 
       <main>
